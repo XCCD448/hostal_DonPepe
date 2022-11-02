@@ -1,0 +1,72 @@
+{% extends 'producto/base/baseproducto.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+<html>
+<body>
+    <!-- Navbar (Menu de navegacion) -->   
+      <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+		
+            <div class="logo"><a href="">Hostal Don <span>Pepe</span></a></div>
+            <ul class="menu">
+                <li><a href="{% url 'agregar_cliente' %}" class="menu-btn">Gestion Clientes</a></li>
+                <li><a href="{% url 'agregar_empresa'%}" class="menu-btn">Gestion Empresas</a></li>
+                <li><a href="{% url 'agregar_producto' %}" class="menu-btn">Gestion Productos</a></li>
+                <li><a href="{% url 'agregar_perfil' %}" class="menu-btn">Gestion Perfiles</a></li>
+                <li><a href="{% url 'agregar_proveedor' %}" class="menu-btn">Gestion Provedores</a></li>
+                <li><a href="{% url 'ordenes_pedido' %}" class="menu-btn">Gestion Pedidos</a></li>
+                <li><a href="{% url 'agregar_huesped' %}" class="menu-btn">Gestion Huespedes</a></li>
+                <li><a href="{% url 'agregar_empleado'%}" class="menu-btn">Gestion Empleados</a></li>
+                <li><a href="{% url 'ordenes_compra' %}" class="menu-btn">Gestion Compras</a></li>
+                <li><a href="{% url 'agregar_habitacion' %}" class="menu-btn">Gestion Habitaciones</a></li>
+                <li><a href="{% url 'listar_reserva' %}" class="menu-btn">Gestion Reservas</a></li>
+                <li><a href="{% url 'agregar_plato' %}" class="menu-btn">Gestion Platos</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- inicio -->
+    <section class="inicio" id="inicio">
+        <div class="max-width">
+            <div class="inicio-content">
+                <div class="text-1">Bienvenido Administrador {{ user.username }} al</div>
+
+                <div class="text-2">Sistema de Gestión de documentos</div>
+                {% if user.is_staff %}
+
+                <a href="{% url 'logout' %}" class="menu-btn">Cerrar sesión</a>
+                <a href="{% url 'menuadmin' %}" class="menu-btn">Menu Principal</a>
+                <a href="{% url 'archivo_list'%}"  class="menu-btn">Listado Documentos</a>
+                {% else %}
+
+                <a href="{% url 'login' %}" class="menu-btn">Iniciar sesión</a>
+             
+                {% endif%}
+             
+            </div>
+        </div>
+    </section>
+<!--  -->
+<section class="servicios" id="servicios">
+    <div class="max-width">
+        <h2 class="title">Subir Documento</h2>
+        <h2 class="title">PDF, Word y Excel.</h2>
+        <div class="serv-content">
+        </div>
+        <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">   
+        <div class="card-body">
+        <h2>Subir Documentos</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit" class="btn btn-primary">Subir Archivo</button>
+        </form>
+{% endblock %}

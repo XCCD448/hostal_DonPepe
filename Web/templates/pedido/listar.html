@@ -1,0 +1,139 @@
+{% extends 'pedido/base/base.html' %}
+{% load humanizelib %}
+{% load static %}
+{% block contenido%}
+
+{% block js %}
+<script>
+    function eliminar_pedido(id){
+        Swal.fire({
+            "title":"¿Estas Seguro?",
+            "text":"Esta acción no se podra deshacer",
+            "icon":"warning",
+            "showCancelButton":true,
+            "cancelButtonText":"No",
+            "confirmButtonText": "Si",
+            
+            "confirmButtonColor":"#dc3545"
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/eliminar_pedido/"+id+"/"
+            }
+        })
+    }
+</script>
+{% endblock %}
+
+<script src="{% static '/Web/js/script.js' %}"></script>
+
+<!-- Navbar (Menu de navegacion) -->   
+  <div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
+<nav class="navbar">
+    <div class="max-width">
+    
+        <div class="logo"><a href="">Hostal Don <span>Pepe</span></a></div>
+        <ul class="menu">
+            <li><a href="{% url 'agregar_cliente' %}" class="menu-btn">Gestion Clientes</a></li>
+            <li><a href="{% url 'agregar_empresa'%}" class="menu-btn">Gestion Empresas</a></li>
+            <li><a href="{% url 'agregar_producto' %}" class="menu-btn">Gestion Productos</a></li>
+            <li><a href="{% url 'agregar_proveedor' %}" class="menu-btn">Gestion Provedores</a></li>
+            <li><a href="{% url 'ordenes_pedido' %}" class="menu-btn">Gestion Pedidos</a></li>
+            <li><a href="{% url 'agregar_huesped' %}" class="menu-btn">Gestion Huespedes</a></li>
+            <li><a href="{% url 'agregar_empleado'%}" class="menu-btn">Gestion Empleados</a></li>
+            <li><a href="{% url 'ordenes_compra' %}" class="menu-btn">Gestion Compras</a></li>
+            <li><a href="{% url 'agregar_habitacion' %}" class="menu-btn">Gestion Habitaciones</a></li>
+            <li><a href="{% url 'listar_reserva' %}" class="menu-btn">Gestion Reservas</a></li>
+            <li><a href="{% url 'agregar_plato' %}" class="menu-btn">Gestion Platos</a></li>
+        </ul>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+<!-- Navbar (Menu de navegacion) -->  
+       <!-- inicio -->
+       <section class="inicio" id="inicio">
+        <div class="max-width">
+            <div class="inicio-content">
+
+                <div class="text-2">Listado de Ordenes de pedidos</div>
+                {% if user.is_authenticated %}
+
+                <a href="{% url 'logout' %}" class="menu-btn">Cerrar sesión</a>
+                <a href="{% url 'ordenes_pedido' %}" class="menu-btn">Enviar Solicitud</a>
+                <a href="{% url 'menuadmin' %}" class="menu-btn">Menu Principal</a>
+                {% else %}
+
+                <li><a href="{% url 'login' %}" class="menu-btn">Iniciar sesión</a></li>
+             
+                {% endif%}
+              
+            </div>
+        </div>
+    </section>
+
+<center>
+<!--  -->
+<section class="servicios" id="servicios">
+    <div class="max-width">
+        <h2 class="title">Listado Ordenes de Pedidos</h2>
+        <div class="serv-content">
+            <!--<a href="#" class="btn btn-secondary">Exportar PDF</a>-->
+            <br>
+            <a href="{% url 'pdf'%}" class="btn btn-secondary">Exportar PDF</a>
+                    <table style="color: white;" class="table table-striped table-hover table-responsive-sm">
+                        <tr>
+                            <th>Correo Empleado</th> 
+                            <th>Nombre Proveedor</th> 
+                            <th>Familia Producto</th> 
+                            <th>Tipo Producto</th> 
+                            <th>Estado</th> 
+                            <th>Detalle del pedido</th>
+                            <th>Respuesta del Proveedor</th> 
+                            <th>Opciones</th>
+                
+
+                            
+                        </tr>
+                        {% for p in pedidos %}
+                        <tr>
+                            <td>{{ p.correo_empleado | title }}</td>
+                            <td>{{ p.proveedor| title }}</td>  
+                            <td>{{ p.familia_producto | capfirst }}</td>
+                            <td>{{ p.tipo_producto | capfirst }}</td>  
+                            <td>{{ p.estado | capfirst }}</td> 
+                            <td>{{ p.detalle_del_pedido | capfirst }}</td> 
+                            <td>{{ p.comentarios | capfirst }}</td> 
+                            <td>
+                                <a href="{% url 'modificar_pedido' p.id %}" class="btn btn-info btn-sm"> Modificar </a>
+                                <a href="#" onclick="eliminar_pedido({{ p.id }})" class="btn btn-danger btn-sm"> Cancelar </a>
+                            </td>
+                        </tr>
+                        {%endfor%}   
+                       </table>
+                </div>
+            </div>
+         </div>
+    </section>
+</center>
+    <script src="script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+    {% for m in messages %}
+      <script>
+          Swal.fire({
+              "titlle":"Felicitaciones",
+              "text":"{{m}}",
+              "icon":"success"
+          })
+      </script>
+    {% endfor %}
+  {% endif%}
+
+
+ 
+
+{% endblock %}

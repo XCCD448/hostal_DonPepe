@@ -1,0 +1,77 @@
+
+.grid {
+  margin: 10px;
+  display: grid;
+  color:#d9d9d9;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  align-items: stretch;
+  }
+.grid > article {
+  display:flex-wrap;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+  border-radius: 3px;
+  background:purple;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.grid > article:hover{
+  transition: transform .20s ease-out;
+  transform: translateY(5px);
+}
+
+.grid > article img {
+  width: 100%;
+}
+
+.text {
+  padding: 0 20px 20px;
+  
+}
+
+.text > h3{
+  text-transform: uppercase;
+  font-weight: 800;
+  background: purple;
+}
+.text > p{
+  text-transform: uppercase;
+  font-weight: 400;
+  background: purple;
+}
+.text > p{
+	background:purple;
+}
+.text > button {
+  background: linear-gradient(to right, #f030a7, #f0308d, #f03061);
+  border-radius: 10px;
+  border: 10px;
+  color: white;
+  padding: 10px;
+  margin:6px;
+  width: 100%;
+  font-weight: 600;
+  text-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+  text-transform: uppercase;
+}
+
+
+@media (max-width: 768px){
+  .grid{
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0;
+  }
+}
+
+@media (max-width: 500px){
+  .grid{
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0;
+  }
+
+  .grid > article{
+    text-align: center;
+  }
+}

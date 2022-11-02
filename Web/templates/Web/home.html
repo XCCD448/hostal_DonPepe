@@ -1,0 +1,161 @@
+{% extends 'Web/base/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<html>
+<body>
+    <script src="{% static '/Web/js/script.js' %}"></script>
+
+    <!-- Navbar (Menu de navegacion) -->   
+      <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+		
+            <div class="logo"><a href="">Hostal Don <span>Pepe</span></a></div>
+            <ul class="menu">
+                <li><a href="{% url 'habitaciones' %}" class="">Habitaciones</a></li>
+                <li><a href="#servicios" class="">Servicios</a></li>
+                <li><a href="{% url 'contacto' %}" class="menu-btn">Contacto</a></li>
+                <li><a href="{% url 'registrar' %}" class="menu-btn">Registrarse</a></li>
+ 
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'minuta_semanal' %}" class="menu-btn">Menu de la semana</a></li>
+                <li><a href="{% url 'logout' %}" class="menu-btn">Cerrar sesión</a></li>
+                <li><a href="#">{{ user.username }}</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'menuadmin' %}" class="menu-btn">Menu de gestión</a></li>
+                {% endif %}
+                {% else %} 
+                <li><a href="{% url 'login' %}" class="menu-btn">Iniciar sesión</a></li>
+             
+                
+                {% endif%}
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar (Menu de navegacion) -->   
+    <!-- inicio -->
+    <section class="inicio" id="inicio">
+        <div class="max-width">
+            <div class="inicio-content">
+                <div class="text-1">Bienvenidos a: </div>
+                <div class="text-2">Hostal Don Pepe</div>
+                <div class="text-3">¿No tienes habitación?</div><color:>
+                <a href="{% url 'reserva_view'%}">Reservar</a>
+            </div>
+        </div>
+    </section>
+
+  <!-- ¿Quienes somos? -->
+    <section class="about" id="about">
+        <div class="max-width">
+            <h2 class="title">¿Quienes somos?</h2>
+            <div class="about-content">
+                <div class="column left">
+                    <img src="{% static 'Web/images/icon.png' %}" alt="">
+                </div>
+                <div class="column right">
+                    <div class="text"> <span class="">Hostal Don Pepe es una empresa familiar dedicada al hospedaje de empresas que recorren chile dando un servicio de calidad y seguridad a los trabajadores de empresas.</span></div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+
+   <!-- Nuestros servicios -->
+   <section class="servicios" id="servicios">
+    <div class="max-width">
+        <h2 class="title">Nuestros Servicios</h2>
+        <div class="serv-content">
+            <div class="card">
+                <div class="box">
+                    <i class="fa fa-hotel"></i>
+                    <div class="text">Hospedaje</div>
+                    <p>Nuestro hostal esta abierto durante las 24 hras del dia </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <i class="fa fa-rss"></i>
+                    <div class="text">Internet</div>
+                    <p>Puedes acceder al internet desde cualquier punto de nuestro hostal.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <i class="fa fa-address-card"></i>
+                    <div class="text">Personal</div>
+                    <p>Nuestro personal esta capacitado para ayudarte con tus dudas y en el idioma que se lo especifiques.</p>
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="carousel owl-carousel">
+              <div class="card card-1">
+              <img src="{% static 'Web/images/icon.png' %}" alt="">
+              </div>
+              <div class="card card-2">
+              <img src="{% static 'Web/images/img1.jpg' %}" alt="">
+              </div>
+              <div class="card card-3">
+              <img src="{% static 'Web/images/img2.jpg' %}" alt="">
+              </div>
+              <div class="card card-4">
+              <img src="{% static 'Web/images/img3.jpg' %}" alt="">
+              </div>
+              <div class="card card-5">
+              <img src="{% static 'Web/images/img4.jpg' %}" alt="">
+              </div>
+              <div class="card card-5">
+              <img src="{% static 'Web/images/img8.jpg' %}" alt="">
+              </div>
+          </div>
+    </div>
+    
+                  <script>
+                        $(".carousel").owlCarousel({
+                          margin: 20,
+                          loop: true,
+                          autoplay: true,
+                          autoplayTimeout: 2000,
+                          autoplayHoverPause: true,
+                          responsive: {
+                            0:{
+                              items:1,
+                              nav: false
+                            },
+                            600:{
+                              items:2,
+                              nav: false
+                            },
+                            1000:{
+                              items:3,
+                              nav: false
+                            }
+                          }
+                        });
+                      </script>
+</section>
+<!-- Nuestros servicios -->
+<!-- footer section start -->
+<footer>
+    <span>Creado por <a href="">Hostal Don pepe</a> | <span class="far fa-copyright"></span> 2022 Todos los derechos reservados.</span>
+
+
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,39 @@
+
+<title>Hostal Don Pepe</title>
+<style>
+    table.bottomBorder { 
+      border-collapse: collapse; 
+    }
+    table.bottomBorder td, 
+    table.bottomBorder th { 
+      border-bottom: 1px solid rgba(107, 9, 146, 0.863); 
+      padding: 10px; 
+      text-align: left;
+    }
+  </style>
+  <h2>Registro de Ordenes de compras</h2>
+  <table class="bottomBorder">
+    <tr>
+        <th>Nro</th>
+        <th>Huesped</th>
+        <th>Habitacion</th>
+        <th>Plato</th>
+        <th>Tipo de servicio</th>
+        <th>Detalle de la compra</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+    </tr>
+    <tr>
+        {% for compra in compras %}
+        <tr>
+            <td>{{ compra.id }}</td>
+            <td>{{ compra.huesped }}</td>
+            <td>{{ compra.habitacion }}</td>
+            <td>{{ compra.plato }}</td>
+            <td>{{ compra.tipo_servicio }}</td>
+            <td>{{ compra.detalle_de_la_compra }}</td>
+            <td>{{ compra.estado_orden_compra }}</td>
+            <td>{{ compra.fecha }}</td>
+        </tr>
+    {% endfor %}
+  </table>

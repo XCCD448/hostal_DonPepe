@@ -1,0 +1,82 @@
+{% extends 'comedor/base/basecomedor.html' %}
+
+{% load static %}
+{% load humanize %}
+{% block contenido %}
+<html>
+<body>
+    <script src="{% static '/Web/js/script.js' %}"></script>
+
+    <!-- Navbar (Menu de navegacion) -->   
+      <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+		
+            <div class="logo"><a href="">Hostal Don <span>Pepe</span></a></div>
+            <ul class="menu">   
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" class="menu-btn">Cerrar sesión</a></li>
+                <li><a href="#">{{ user.username }}</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'menuadmin' %}" class="menu-btn">Menu de gestión</a></li>
+                {% endif %}
+                {% else %} 
+             
+                
+                {% endif%}
+                <li><a href="{% url 'home' %}" class="menu-btn">Inicio</a></li>
+  
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+        <!-- Navbar (Menu de navegacion) -->   
+    <!-- inicio -->
+    <section class="inicio" id="inicio">
+        <div class="max-width">
+            <div class="inicio-content">
+                <div class="text-1">Bienvenidos a: </div>
+                <div class="text-2">Hostal Don Pepe</div>
+                <div class="text-3">Revisa nuestras habitaciones :)</div>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="servicios" id="servicios">
+    <div class="max-width">
+        <h2 class="title">habitaciones para empresas</h2>
+        <div class="serv-content">
+    </div>
+<main class="grid">
+  {% for h in habitaciones %}
+  <article>
+    {% if h.imagen %}
+    <img src="{{ h.imagen.url }}" alt="Sample photo">
+    {% endif %}
+    <div class="text">
+      <br>
+      <h3>{{h.nombre_habitacion | capfirst }}</h3>
+      <br>
+      <h3> Tipo de Habitación: {{h.categoria | capfirst }}</h3>
+      <br>
+      <h3> Cantidad de camas: {{h.camas | intcomma }}</h3>
+      <h3> Cantidad de baños: {{h.baños | intcomma }}</h3>
+      <h3> Cantidad de personas: {{h.cantidad_personas | intcomma }}</h3>
+      <br>  
+      <h3> Precio: $ {{h.precio | intcomma }}</h3>
+      <h3> Estado Habitación: {{h.estado_habitacion | capfirst }}</h3>
+      <br>
+      <br>   
+    </div>
+  </article>
+
+{% endfor %}
+
+</body>
+</html>
+{% endblock %}
+    <!-- Navbar (Menu de navegacion) -->  

@@ -1,0 +1,103 @@
+{% extends 'comedor/base/basecomedor.html' %}
+{% load static %}
+{% load humanize %}
+{% block contenido %}
+<html>
+<body>
+    <script src="{% static '/Web/js/script.js' %}"></script>
+
+   <!-- Navbar (Menu de navegacion) -->   
+   <div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
+<nav class="navbar">
+    <div class="max-width">
+    
+        <div class="logo"><a href="">Hostal Don <span>Pepe</span></a></div>
+        <ul class="menu">
+            {% if user.is_authenticated %}
+            {% if user.is_staff %}
+            <li><a href="{% url 'agregar_cliente' %}" class="menu-btn">Gestion Clientes</a></li>
+            <li><a href="{% url 'agregar_empresa'%}" class="menu-btn">Gestion Empresas</a></li>
+            <li><a href="{% url 'agregar_producto' %}" class="menu-btn">Gestion Productos</a></li>
+            <li><a href="{% url 'agregar_perfil' %}" class="menu-btn">Gestion Perfiles</a></li>
+            <li><a href="{% url 'agregar_proveedor' %}" class="menu-btn">Gestion Provedores</a></li>
+            <li><a href="{% url 'ordenes_pedido' %}" class="menu-btn">Gestion Pedidos</a></li>
+            <li><a href="{% url 'agregar_huesped' %}" class="menu-btn">Gestion Huespedes</a></li>
+            <li><a href="{% url 'agregar_empleado'%}" class="menu-btn">Gestion Empleados</a></li>
+            <li><a href="{% url 'ordenes_compra' %}" class="menu-btn">Gestion Compras</a></li>
+            <li><a href="{% url 'agregar_habitacion' %}" class="menu-btn">Gestion Habitaciones</a></li>
+            <li><a href="{% url 'listar_reserva' %}" class="menu-btn">Gestion Reservas</a></li>
+            <li><a href="{% url 'agregar_plato' %}" class="menu-btn">Gestion Platos</a></li>
+            {% endif %}
+                            {% else %} 
+                            <li><a href="{% url 'habitaciones' %}" class="">Habitaciones</a></li>
+                            <li><a href="{% url 'login' %}" class="menu-btn">Iniciar sesión</a></li>
+                         
+                            
+                            {% endif%}
+        </ul>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+        <!-- Navbar (Menu de navegacion) -->   
+    <!-- inicio -->
+    <section class="inicio" id="inicio">
+        <div class="max-width">
+            <div class="inicio-content">
+                <div class="text-1">Bienvenidos a: </div>
+                <div class="text-2">Hostal Don Pepe</div>
+                <div class="text-3">Revisa nuestro menu de la semana :O</div>
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="menu-btn">Cerrar sesión</a>
+                <a href="{% url 'ordenes_compra'%}">Solicitar Orden</a>
+                <a href="#">{{ user.username }}</a>
+                {% if user.is_staff %}
+                <a href="{% url 'menuadmin' %}" class="menu-btn">Menu de gestión</a>
+                {% endif %}
+                {% else %} 
+             
+                
+                {% endif%}
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="servicios" id="servicios">
+    <div class="max-width">
+        <h2 class="title">Desayunos y Almuerzos Ejecutivos</h2>
+        <div class="title">Minuta Semanal</div>
+        <div class="serv-content">
+    </div>
+<main class="grid">
+  {% for c in comedores %}
+  <article>
+    {% if c.imagen %}
+    <img src="{{ c.imagen.url }}" alt="Sample photo">
+    {% endif %}
+    <div class="text">
+      <br>
+      <h3>{{c.nombre_plato | capfirst }}</h3>
+      <br>
+      <h3> Precio: {{c.precio_plato | capfirst }}</h3>
+      <br>
+      <h3> {{c.servicio | capfirst }}</h3>
+      <br>
+
+      <h3> {{c.descripcion | capfirst }}</h3>
+      <br>  
+      <br>
+      <br>   
+    </div>
+  </article>
+
+{% endfor %}
+
+
+</body>
+</html>
+{% endblock %}
+    <!-- Navbar (Menu de navegacion) -->  

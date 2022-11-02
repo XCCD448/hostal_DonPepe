@@ -1,0 +1,9 @@
+body{
+    background:url(https://www.hotelsantiagodecompostelaoxfordsuites.com/img/habitaciones/hb_03.jpg);
+    display: flex;
+    height: 100vh;
+    min-height: 500px;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+}

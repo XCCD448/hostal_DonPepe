@@ -1,0 +1,35 @@
+
+    <title>Hostal Don Pepe</title>
+<style>
+    table.bottomBorder { 
+      border-collapse: collapse; 
+    }
+    table.bottomBorder td, 
+    table.bottomBorder th { 
+      border-bottom: 1px solid rgba(107, 9, 146, 0.863); 
+      padding: 10px; 
+      text-align: left;
+    }
+  </style>
+  <h2>Registro de listado de pedidos</h2>
+  <table class="bottomBorder">
+    <tr>
+        <th>Correo Empleado</th>
+        <th>Nombre Proveedor</th>
+        <th>Nro Famlia del producto</th>
+        <th>Nro tipo del producto</th>
+        <th>Estado del pedido</th>
+        <th>Detalle del pedido</th>
+    </tr>
+    <tr>
+        {% for pedido in pedidos %}
+        <tr>
+            <td>{{ pedido.correo_empleado }}</td>
+            <td>{{ pedido.proveedor }}</td>
+            <td>{{ pedido.familia_producto }}</td>
+            <td>{{ pedido.tipo_producto }}</td>
+            <td>{{ pedido.estado }}</td>
+            <td>{{ pedido.detalle_del_pedido }}</td>
+        </tr>
+    {% endfor %}
+  </table>

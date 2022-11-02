@@ -1,0 +1,58 @@
+{% extends 'comedor/base/basecomedor.html' %}
+{% load static %}
+{% block contenido %}
+<html>
+<body>
+    <script src="{% static '/Web/js/script.js' %}"></script>
+
+    <!-- Navbar (Menu de navegacion) -->   
+      <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+		
+            <div class="logo"><a href="">Hostal Don <span>Pepe</span></a></div>
+            <ul class="menu">   
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" class="menu-btn">Cerrar sesión</a></li>
+                <li><a href="#">{{ user.username }}</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'menuadmin' %}" class="menu-btn">Menu de gestión</a></li>
+                {% endif %}
+                {% else %} 
+             
+                
+                {% endif%}
+                <li><a href="{% url 'home' %}" class="menu-btn">Inicio</a></li>
+                <li><a href="{% url 'login' %}" class="menu-btn">Iniciar Sesión</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+        <!-- Navbar (Menu de navegacion) -->   
+    <!-- inicio -->
+    <section class="inicio" id="inicio">
+        <div class="max-width">
+            <div class="inicio-content">
+                <div class="text-1">Bienvenidos a: </div>
+                <div class="text-2">Hostal Don Pepe</div>
+                <div class="text-3">Lo sentimos pero este tipo de categoria no existe :( </div>
+            </div>
+        </div>
+    </section>
+</div>
+                   {% if messages %}
+                   {% for m in messages %}
+                     <script>
+                         Swal.fire({
+                             "titlle":"Felicitaciones",
+                             "text":"{{m}}",
+                             "icon":"success"
+                         })
+                     </script>
+                   {% endfor %}
+                 {% endif%}
+{% endblock %}

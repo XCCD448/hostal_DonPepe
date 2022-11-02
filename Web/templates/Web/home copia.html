@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostal Don Pepe</title>
+    {% load static %}
+	<link rel="icon" type="image/png" href="{% static 'Web/images/icon.png' %}">
+    <link rel="stylesheet" href="{% static 'Web/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'Web/css/card.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+  </head>
+<body>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+		
+            <div class="logo"><a href="">Hostal Don <span>Pepe</span></a></div>
+            <ul class="menu">
+                <li><a href="#" class="menu-btn">Habitaciones</a></li>
+                <li><a href="#servicios" class="">Servicios</a></li>
+                <li><a href="login.html" class="menu-btn">Iniciar Sesión</a></li>
+                <li><a href="#contacto" class="menu-btn">Contacto</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- inicio -->
+    <section class="inicio" id="inicio">
+        <div class="max-width">
+            <div class="inicio-content">
+                <div class="text-1">Bienvenidos a: </div>
+                <div class="text-2">Hostal Don Pepe</div>
+                <div class="text-3">¿No tienes habitaciòn?</div><color:>
+                <a href="#">Reservar</a>
+            </div>
+        </div>
+    </section>
+
+  <!-- ¿Quienes somos? -->
+    <section class="about" id="about">
+        <div class="max-width">
+            <h2 class="title">¿Quienes somos?</h2>
+            <div class="about-content">
+                <div class="column left">
+                    <img src="{% static 'Web/images/icon.png' %}" alt="">
+                </div>
+                <div class="column right">
+                    <div class="text"> <span class="">Hostal Don Pepe es una empresa familiar dedicada al hospedaje de empresas que recorren chile dando un servicio de calidad y seguridad a los trabajadores de empresas.</span></div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+   <!-- Nuestros servicios -->
+    <section class="servicios" id="servicios">
+        <div class="max-width">
+            <h2 class="title">Nuestros Servicios</h2>
+            <div class="serv-content">
+                <div class="card">
+                    <div class="box">
+                        <i class="fa fa-hotel"></i>
+                        <div class="text">Hospedaje</div>
+                        <p>Nuestro hostal esta abierto durante las 24 hras del dia </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fa fa-rss"></i>
+                        <div class="text">Internet</div>
+                        <p>Puedes acceder al internet desde cualquier punto de nuestro hostal.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fa fa-address-card"></i>
+                        <div class="text">Personal</div>
+                        <p>Nuestro personal esta capacitado para ayudarte con tus dudas y en el idioma que se lo especifiques.</p>
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+        <section>
+            <div class="wrapper">
+              <div class="carousel owl-carousel">
+                <div class="card card-1">
+                <img src="{{% static 'Web/images/icon.png' %}" alt="">
+                    </div>
+                    <div class="card card-2">
+                    <img src="{% static 'Web/images/img1.jpg' %}" alt="">
+                    </div>
+                    <div class="card card-3">
+                    <img src="{% static 'Web/images/img2.jpg' %}" alt="">
+                    </div>
+                    <div class="card card-4">
+                    <img src="{% static 'Web/images/img3.jpg' %}" alt="">
+                    </div>
+                    <div class="card card-5">
+                    <img src="{% static 'Web/images/img4.jpg' %}" alt="">
+                    </div>
+                    <div class="card card-5">
+                    <img src="{% static 'Web/images/img8.jpg' %}" alt="">
+                    </div>
+                </div>
+          </div>
+                        <script>
+                              $(".carousel").owlCarousel({
+                                margin: 20,
+                                loop: true,
+                                autoplay: true,
+                                autoplayTimeout: 2000,
+                                autoplayHoverPause: true,
+                                responsive: {
+                                  0:{
+                                    items:1,
+                                    nav: false
+                                  },
+                                  600:{
+                                    items:2,
+                                    nav: false
+                                  },
+                                  1000:{
+                                    items:3,
+                                    nav: false
+                                  }
+                                }
+                              });
+                            </script>
+        </section>
+	<!-- Nuestros servicios -->
+	
+    <!-- Contacto -->
+    <section class="contacto" id="contacto">
+        <div class="max-width">
+                  <h2 class="title"><p>Contactanos</p></h2>
+            <div class="contacto-content">
+                <div class="column left">
+                    <div class="text">Nosotros nos encontramos</div>
+                    <p>Cualquier tipo de problematica que tengas con nuestros servicios por favor envianos un mensaje o puedes ir personalmentey te responderemos </p>
+                    <div class="icons">
+                        <div class="row">
+                            <i class="fa fa-hotel"></i>
+                            <div class="info">
+                                <div class="head">Numero telefonico</div>
+                                <div class="sub-title">+569 12345678</div>
+                                <div class="sub-title">+562 23456786</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="info">
+                                <div class="head">Ubicación</div>
+                                <div class="sub-title"> Santiago centro / Santiago Centro N°5432</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <i class="fas fa-envelope"></i>
+                            <div class="info">
+                                <div class="head">Email</div>
+                                <div class="sub-title">Hostaldoñaclarita@gmail.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column right">
+                    <div class="text">Mandanos un mensaje</div>
+                    <form action="#">
+                        <div class="fields">
+                            <div class="field name">
+                                <input type="text" placeholder="Nombre" required>
+                            </div>
+                            <div class="field email">
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <input type="text" placeholder="Asunto" required>
+                        </div>
+                        <div class="field textarea">
+                            <textarea cols="30" rows="10" placeholder="Escribe mensaje" required></textarea>
+                        </div>
+                        <div class="button">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+	<center>
+    <!-- footer section start -->
+    <footer>
+        <span>Creado por <a href="">Hostal Don pepe</a> | <span class="far fa-copyright"></span> 2022 Todos los derechos reservados.</span>
+
+
+    </footer>
+	
+
+    <script src="script.js"></script>
+</body>
+</html>
